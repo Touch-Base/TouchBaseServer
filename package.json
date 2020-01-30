@@ -1,6 +1,9 @@
 {
   "name": "TouchBaseServer",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0"
+  },
   "description": "This is the database for TouchBase users and their data.",
   "main": "index.js",
   "dependencies": {
@@ -18,8 +21,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "test": "Test",
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
