@@ -36,6 +36,8 @@ module.exports = {
     }
   ],
     
+    // seeds for jobs
+    
     jobs: [
       {
         // job - 1
@@ -59,7 +61,63 @@ module.exports = {
         notes: 'I love Athena! They are in Waltham, MA',
         userId: 1
       }
+    ],
+  
+  // seeds for connections
+  
+   connections: [
+      {
+        // connection - 1
+        
+        firstname: 'Mikey',
+        lastname: 'Jobgetter',
+        title: 'CEO',
+        company: 'Recroot',
+        phone: faker.phone.phoneNumber(),
+        email: faker.internet.email(),
+        notes: 'Great guy and great friend!!!',
+        userId: 1
+      },
+      {
+        // connection - 2
+        
+        firstname: 'Selena',
+        lastname: 'Hawty',
+        title: 'CFO',
+        company: 'Worldwide World',
+        phone: faker.phone.phoneNumber(),
+        email: faker.internet.email(),
+        notes: 'Great connection, awesome to talk to!!!',
+        userId: 1
+      },
+    ],
+    
+    // seeds for events
+    
+    events: [
+      {
+        // event - 1
+        
+        name: 'Worldwide Coders International',
+        location: 'Chicago, IL',
+        date: '08/08/2050',
+        description: 'WCI first event at biggest venue on planet. Going to be incredible',
+        userId: 1
+      },
+      {
+        // event - 2
+        
+        name: 'Coder Convention',
+        location: 'New York, NY',
+        date: '01/01/1250',
+        description: 'Wish I went to this.',
+        userId: 1
+      }
     ]
+}
+      
+  
+  
         
         
         
