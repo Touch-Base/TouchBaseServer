@@ -1,9 +1,13 @@
 module.exports = {
     development: {
-      client: 'sqlite3',
+      client: 'pg',
       useNullAsDefault: true, 
       connection: {
-        filename: './data/database.db3',
+        host: process.DB_HOST,
+        port: process.env.DB_PORT || 5432,
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD,
+        database: process.eventNames.DB_NAME || 'touchbase',
       },
       migrations: {
         directory: './data/migrations'
