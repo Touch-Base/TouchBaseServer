@@ -11,7 +11,7 @@ module.exports = {
   getUserById,
   
   // Update
-  updateUser
+  updateUserById
 }
 
 // ---- CREATE ----
