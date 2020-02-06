@@ -71,7 +71,7 @@ async function updateJob(changes, id) {
 
 // ---- DELETE ----
 
-// deleteJob() - delets a job by job id
+// deleteJob() - deletes a job by job id
 
 async function deleteJob(id) {
   const results = await db
