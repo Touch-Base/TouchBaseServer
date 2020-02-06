@@ -1,31 +1,50 @@
-const db = require('../data/db-config.js');
+const db = require('../../../database/db');  // imports database
+
+
+// functions for dealing with CRU for users
 
 module.exports = {
-    find,
-    findBy,
-    findById,
-    add
-}
-/// knex SQL functions for the users database
-
-function find() {
-    return db('users').select('id', 'firstname', 'lastname', 'email', 'password');
-}
-
-function findBy(filter) {
-    console.log(filter)
-    return db('users').where(filter);
+  // Create
+  addUser,
+  
+  // Read
+  getUserById,
+  
+  // Update
+  updateUser
 }
 
-function findById(id) {
-    return db('users').where({ id }).first();
+// ---- CREATE ----
+
+// addUser(input) - creates a user
+
+async function addUser(user) {
+    const [user] = await db
+        .from('users')
+        .insert(user)
+    
+    return user || null;
+}
+      
+// ---- READ ----
+
+// getUserById(id) - gets a user by the user id
+
+async function getUserById(id) {
+    const [user] = await db
+        .from('users')
+        .where({ id })
+    
+    return user;
 }
 
-function add(user) {
-    return db('users')
-      .insert(user, 'id')
-      .then(ids => {
-        const [id] = ids;
-        return findById(id);
-      });
-  }
+// updateUserById(update, id) - updates a user by the user id
+
+async function updateUserById(changes, id) {
+    const [user] = await db
+        .from('users')
+        .update(changes)
+        .where({ id })
+        
+    return user;
+}
