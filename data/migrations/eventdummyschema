@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return (knex.schema 
-        .createTable('event', tbl => {
+        .createTable('events', tbl => {
             tbl.increments('id');
             tbl.string('name').notNullable(); // Name of the event
             tbl.string('location').notNullable(); // Event's location
@@ -17,5 +17,5 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema
-      .dropTableIfExists('event')
+      .dropTableIfExists('events')
   };
