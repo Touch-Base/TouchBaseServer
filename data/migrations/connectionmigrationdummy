@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return (knex.schema 
-        .createTable('connection', tbl => {
+        .createTable('connections', tbl => {
             tbl.increments('id');
             tbl.string('firstname').notNullable(); // First name of connection
             tbl.string('lastname').notNullable(); // Last name of connection
@@ -19,5 +19,5 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema
-      .dropTableIfExists('connection')
+      .dropTableIfExists('connections')
   };
