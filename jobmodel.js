@@ -1,4 +1,4 @@
-const db = require('../../../datanase/db');  // imports database
+const db = require('../../../database/db');  // imports database
 
 
 // functions for dealing with CRUD for jobs
