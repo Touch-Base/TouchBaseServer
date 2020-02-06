@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
     development: {
       client: 'pg',
@@ -6,7 +8,7 @@ module.exports = {
         host: process.DB_HOST,
         port: process.env.DB_PORT || 5432,
         user: process.env.DB_USER || 'postgres',
-        password: process.env.DB_PASSWORD,
+        password: process.env.DB_PASSWORD || 'postgres',
         database: process.eventNames.DB_NAME || 'touchbase',
       },
       migrations: {
@@ -14,13 +16,6 @@ module.exports = {
       },
       seeds: {
         directory: './data/seeds'
-      },
-      // needed when using foreign keys
-      pool: {
-        afterCreate: (conn, done) => {
-          // runs after a connection is made to the sqlite engine
-          conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
-        },
       },
     },
   };
