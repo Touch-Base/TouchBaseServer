@@ -23,7 +23,8 @@ module.exports = {
 // addJob(input) - inserts input to jobs and return results for a job by id inserted
 
 async function addJob(input, userId) {
-  const results = await db('jobs')
+  const results = await db
+    .from('jobs')
     .returning('id')
     .insert({ ...input, userId: userId })
    
@@ -35,7 +36,7 @@ async function addJob(input, userId) {
 // getJob() - returns results for a job by id
 
 async function getJob(id) {
-  const [job] = awaitd db
+  const [job] = await db
     .from('jobs')
     .select('*')
     .where({ id })
@@ -46,7 +47,8 @@ async function getJob(id) {
 // getJobsByUser() - returns all results for jobs for a user
 
 async function getJobsByUser(userId) {
-  const results = await db('jobs')
+  const results = await db
+    .from('jobs')
     .where({ 'jobs.userId': userId })
     .select('*')
             
