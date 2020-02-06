@@ -6,7 +6,6 @@ exports.up = function(knex) {
             tbl.string('lastname', 128).notNullable();
             tbl.date('creationDate');
             tbl.string('email', 128).notNullable().unique();
-            tbl.string('password', 128).notNullable();
             tbl.integer('age');
             tbl.string('location');
             tbl.integer('jobsTotal');
