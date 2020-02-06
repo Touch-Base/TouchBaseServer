@@ -6,9 +6,15 @@ const db = require('../../../datanase/db');  // imports database
 module.exports = {
   // Create
   addJob,
+  
+  // Read
   getJob,
   getJobsByUser,
+  
+  // Update
   updateJob,
+  
+  // Delete
   deleteJob
 }
 
