@@ -5,7 +5,11 @@ const db = require('../../../datanase/db');  // imports database
 
 module.exports = {
   // Create
-  addJob
+  addJob,
+  getJob,
+  getJobsByUser,
+  updateJob,
+  deleteJob
 }
 
 // ---- CREATE ----
@@ -32,4 +36,42 @@ async function getJob(id) {
   
   return job || null;
 }
+
+// getJobsByUser() - returns all results for jobs for a user
+
+async function getJobsByUser(userId) {
+  const results = await db('jobs')
+    .where({ 'jobs.userId': userId })
+    .select('*')
+            
+ return results;
+}
+           
+// ---- UPDATE ----
+           
+// updateJob() - updates a job by job id
+           
+async function updateJob(changes, id) {
+      const [job] = await db
+        .from('jobs')
+        .update(changes)
+        .where({ id })
+        .returning('*')
+      
+      return job;
+    }
+
+// ---- DELETE ----
+
+// deleteJob() - delets a job by job id
+
+async function deleteJob(id) {
+  const results = await db
+    .from('jobs')
+    .where({ id })
+    .del()
+  
+  return results;
+}
+      
  
