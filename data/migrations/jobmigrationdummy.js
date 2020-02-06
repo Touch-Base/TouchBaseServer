@@ -6,7 +6,7 @@ exports.up = function(knex) {
             tbl.string('company').notNullable(); // Company Name
             tbl.date('appDate'); // Application Date
             tbl.text('notes'); // Description of the job/interview notes
-            tbl.boolean('interview'); // Checks if if there is an interview offer
+            tbl.boolean('interview', false); // Checks if if there is an interview offer
             tbl
               .integer('userId')
               .unsigned()
