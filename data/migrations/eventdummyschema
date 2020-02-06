@@ -1,0 +1,21 @@
+exports.up = function(knex) {
+    return (knex.schema 
+        .createTable('event', tbl => {
+            tbl.increments('id');
+            tbl.string('name').notNullable(); // Name of the event
+            tbl.string('location').notNullable(); // Event's location
+            tbl.date('date').notNullable(); // Event's date
+            tbl.text('description'); // Event description
+            tbl.boolean('attended').toDefault(false); // Did you attend the event?
+            tbl
+              .integer('userId')
+              .unsigned()
+              .references('id')
+              .inTable('users'); // Matches the event to the user
+        })
+)};
+
+exports.down = function(knex) {
+    return knex.schema
+      .dropTableIfExists('event')
+  };
