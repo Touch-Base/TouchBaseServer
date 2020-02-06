@@ -58,6 +58,29 @@ router.post('/login', (req, res) => {
     });
 });
 
+// UPDATE USER
+
+router.put('/update', (req, res) => {
+  let changes = req.body;
+  
+  Users.updateUserById(changes, changes.id) {
+    .then(newUser => {
+      
+      res.status(200).json({
+        user: user,
+        message: 'User updated successfully! Congrats ${user.firstname}!'
+      })
+      
+     .catch(error => {
+        res.status(500).json(error);
+      })
+    }});
+    
+    
+
+
+// Generates a crypted token
+
 function generateToken(user) {
   const payload = {
     sub: user.id,
