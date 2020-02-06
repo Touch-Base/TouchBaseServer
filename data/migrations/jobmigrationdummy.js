@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return (knex.schema 
-        .createTable('job', tbl => {
+        .createTable('jobs', tbl => {
             tbl.increments('id');
             tbl.string('position').notNullable(); // Position Name
             tbl.string('company').notNullable(); // Company Name
@@ -19,6 +19,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
     return knex.schema
-      .dropTableIfExists('job')
+      .dropTableIfExists('jobs')
   };
       
