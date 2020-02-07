@@ -4,7 +4,7 @@ exports.up = function(knex) {
             tbl.increments('id');
             tbl.string('firstname', 128).notNullable(); // User's first name
             tbl.string('lastname', 128).notNullable(); // User's last name
-            tbl.date('creationDate'); // Date the account was created
+            tbl.date('creationDate').defaultTo(Date.now()); // Date the account was created
             tbl.string('email', 128).notNullable().unique(); // User's email address
             tbl.integer('age'); // User's age
             tbl.string('location'); // User's location
