@@ -6,7 +6,7 @@ exports.up = function(knex) {
             tbl.string('location').notNullable(); // Event's location
             tbl.date('date').notNullable(); // Event's date
             tbl.text('description'); // Event description
-            tbl.boolean('attended').toDefault(false); // Did you attend the event?
+            tbl.boolean('attended').defaultTo(false); // Did you attend the event?
             tbl
               .integer('userId')
               .unsigned()

@@ -19,11 +19,11 @@ module.exports = {
 // addUser(input) - creates a user
 
 async function addUser(user) {
-    const [user] = await db
+    const [newuser] = await db
         .from('users')
         .insert(user)
     
-    return user || null;
+    return newuser || null;
 }
       
 // ---- READ ----
