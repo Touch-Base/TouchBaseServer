@@ -22,6 +22,7 @@ async function addUser(user) {
     const [newuser] = await db
         .from('users')
         .insert(user)
+        .returning('*')
     
     return newuser || null;
 }
