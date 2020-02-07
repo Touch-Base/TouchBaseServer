@@ -1,4 +1,4 @@
-const db = require('../../../database/db');  // imports database
+const db = require('../data/db-config'); // imports database
 
 
 // functions for dealing with CRU for users
