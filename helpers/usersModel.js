@@ -11,7 +11,7 @@ module.exports = {
   getUserByEmail,
   
   // Update
-  updateUserById
+  updateUserByEmail
 }
 
 // ---- CREATE ----
@@ -39,13 +39,15 @@ async function getUserByEmail(email) {
     return user;
 }
 
-// updateUserById(update, id) - updates a user by the user id
+// updateUserByEmail(update, email) - updates a user by the user id
 
-async function updateUserById(changes, id) {
+async function updateUserByEmail(email, changes) {
     const [user] = await db
         .from('users')
         .update(changes)
-        .where({ id })
+        .where({ email })
+
+    console.log(user);
         
     return user;
 }

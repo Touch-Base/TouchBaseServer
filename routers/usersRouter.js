@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const authentication = require('../middleware/authentication');
 
 
-// GET USER BY EMAIL
+// GET USER BY EMAIL WITH TOKEN
 
 router.get('/useremail', authentication, (req, res) => {
 
@@ -78,30 +78,30 @@ router.post('/login', (req, res) => {
     });
 });
 
-// UPDATE USER
+// UPDATE USER WITH TOKEN
 
-router.put('/update', (req, res) => {
+router.put('/update', authentication, (req, res) => {
   let changes = req.body;
-  const { id } = req.body;
+  const { email } = req.body;
   
-  Users.updateUserById(changes, id)
+  Users.updateUserByEmail(email, changes)
     .then(newUser => {
       
       res.status(200).json({
         user: newUser,
-        message: 'User updated successfully! Congrats ${user.firstname}!'
-      })
-      
-     .catch(error => {
-        res.status(500).json(error);
+        message: `User updated successfully! Congrats ${newUser.firstname}!`
       })
     })
-  });
+      
+    .catch(error => {
+      res.status(500).json({ message: error });
+      })
+ });
     
     
 
 
-// Generates a crypted token
+// GENERATES A CRYPTED TOKEN BASED ON EMAIL AND USER ID
 
 function generateToken(user) {
   const payload = {
