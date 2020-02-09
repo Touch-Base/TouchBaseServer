@@ -10,7 +10,7 @@ router.post('/add', (req, res) => {
   Jobs.addJob(job, id)
     .then(job => {
       res.status(201).json({
-        newjob: job
+        newjob: job,
         message: 'New job added successfully!'
         })
       })
