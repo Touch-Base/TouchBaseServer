@@ -41,13 +41,6 @@ async function getUserByEmail(email) {
 
 // updateUserByEmail(update, email) - updates a user by the user id
 
-async function updateUserByEmail(email, changes) {
-    const [user] = await db
-        .from('users')
-        .update(changes)
-        .where({ email })
-
-    console.log(user);
-        
-    return user;
+function updateUserByEmail(email, changes) {
+    return db('users').where({ email }).update(changes);
 }

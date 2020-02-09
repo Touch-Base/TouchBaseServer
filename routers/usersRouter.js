@@ -87,10 +87,14 @@ router.put('/update', authentication, (req, res) => {
   Users.updateUserByEmail(email, changes)
     .then(newUser => {
       
-      res.status(200).json({
-        user: newUser,
-        message: `User updated successfully! Congrats ${newUser.firstname}!`
+      Users.getUserByEmail(email) 
+        .then(user => {
+          res.status(201).json({ confirmation: newUser, user: user })
       })
+
+        .catch(err => {
+          res.status(500).json({ message: "Couldn't get user" })
+        })
     })
       
     .catch(error => {
