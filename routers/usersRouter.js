@@ -4,10 +4,13 @@ const bcrypt = require('bcryptjs');
 const Users = require('../helpers/usersModel.js');
 const jwt = require('jsonwebtoken');
 
+// authentication middleware
+const authentication = require('../middleware/authentication');
+
 
 // GET USER BY EMAIL
 
-router.get('/useremail', (req, res) => {
+router.get('/useremail', authentication, (req, res) => {
 
   let { email } = req.body;
 
