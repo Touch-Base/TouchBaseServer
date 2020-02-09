@@ -4,6 +4,23 @@ const bcrypt = require('bcryptjs');
 const Users = require('../helpers/usersModel.js');
 const jwt = require('jsonwebtoken');
 
+
+// GET USER BY EMAIL
+
+router.get('/useremail', (req, res) => {
+
+  let { email } = req.body;
+
+  Users.getUserByEmail(email) 
+    .then(user => {
+      res.status(201).json({ user: user })
+    })
+
+    .catch(err => {
+      res.status(500).json({ message: err })
+    })
+}
+
 // USER REGISTER
 
 router.post('/register', (req, res) => {
