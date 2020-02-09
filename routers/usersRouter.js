@@ -79,8 +79,9 @@ router.post('/login', (req, res) => {
 
 router.put('/update', (req, res) => {
   let changes = req.body;
+  const { id } = req.body;
   
-  Users.updateUserById(changes, changes.id)
+  Users.updateUserById(changes, id)
     .then(newUser => {
       
       res.status(200).json({
