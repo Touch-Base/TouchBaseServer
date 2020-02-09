@@ -11,6 +11,12 @@ module.exports = {
         password: process.env.DB_PASSWORD || 'postgres',
         database: process.eventNames.DB_NAME || 'touchbase',
       },
+      production: {
+        client: "pg",
+        connection: process.env.DATABASE_URL,
+        migrations: { directory: "./data/migrations" },
+        seeds: { directory: "./data/seeds" }
+      },
       migrations: {
         directory: './data/migrations'
       },

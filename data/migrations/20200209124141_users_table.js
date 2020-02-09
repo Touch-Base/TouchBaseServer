@@ -1,10 +1,12 @@
+var myDate = new Date( Date.now() * 1000);
+
 exports.up = function(knex) {
     return (knex.schema
         .createTable('users', tbl => {
             tbl.increments('id');
             tbl.string('firstname', 128).notNullable(); // User's first name
             tbl.string('lastname', 128).notNullable(); // User's last name
-            tbl.date('creationDate').defaultTo(Date.now()); // Date the account was created
+            tbl.date('creationDate').defaultTo(myDate.toLocaleString()); // Date the account was created
             tbl.string('email', 128).notNullable().unique(); // User's email address
             tbl.integer('age'); // User's age
             tbl.string('location'); // User's location
