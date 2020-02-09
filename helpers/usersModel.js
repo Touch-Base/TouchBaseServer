@@ -39,7 +39,7 @@ async function getUserByEmail(email) {
     return user;
 }
 
-// updateUserByEmail(update, email) - updates a user by the user id
+// updateUserByEmail(update, email) - updates a user by email and returns "1" on confirmation
 
 function updateUserByEmail(email, changes) {
     return db('users').where({ email }).update(changes);

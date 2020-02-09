@@ -86,6 +86,8 @@ router.put('/update', authentication, (req, res) => {
   
   Users.updateUserByEmail(email, changes)
     .then(newUser => {
+
+        // after successfully updating, returns the updated user
       
       Users.getUserByEmail(email) 
         .then(user => {

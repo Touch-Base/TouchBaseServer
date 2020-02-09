@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const Jobs = require('../helpers/jobsModel');
+const Jobs = require('../helpers/jobModel');
+
+// authentication middleware
+const authentication = require('../middleware/authentication');
+
 
 /// ADD JOB TO USER WITH USER ID
 
-router.post('/add', (req, res) => {
+router.post('/add', authentication, (req, res) => {
   const job = req.body;
   const { id } = req.body;
   
@@ -20,3 +24,6 @@ router.post('/add', (req, res) => {
         })
       });
   });
+
+
+module.exports = router;
