@@ -19,7 +19,7 @@ router.get('/useremail', (req, res) => {
     .catch(err => {
       res.status(500).json({ message: err })
     })
-}
+});
 
 // USER REGISTER
 
