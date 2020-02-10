@@ -75,5 +75,23 @@ router.put('/update', authentication, (req, res) => {
 
 })
 
+/// DELETES A JOB
+
+router.delete('/delete', authentication, (req, res) => {
+  const { id } = req.body;
+
+  /// checks the user that is logged in and force passes their user ID as the parameter
+  const userId = req.decodedToken.sub;
+
+  Jobs.deleteJob(id, userId)
+    .then(result => {
+      res.status(201).json({ message: "Successfully deleted!", result: result })
+    })
+
+    .catch(err => {
+      res.status(400).json({ message: err })
+    })
+})
+
 
 module.exports = router;

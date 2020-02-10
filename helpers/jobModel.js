@@ -69,7 +69,7 @@ async function getJobsByUser(userId) {
 // updateJob() - updates a job by job id
            
 async function updateJobById(changes, id) {
-  
+
     /// matches job id and user id to correct job
 
     const [job] = await db
@@ -88,10 +88,13 @@ async function updateJobById(changes, id) {
 
 // deleteJob() - deletes a job by job id
 
-async function deleteJob(id) {
+async function deleteJob(id, userId) {
   const results = await db
     .from('jobs')
-    .where({ id })
+    .where({ 
+          'id': id,
+          'userId': userId
+          })
     .del()
   
   return results;
