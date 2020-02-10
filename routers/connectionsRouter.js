@@ -17,5 +17,23 @@ router.get('/get', (req, res) => {
     })
 });
 
+// ADD CONNECTION BY USER
+
+router.post('/add', authentication, (req, res) => {
+  
+  const connection = req.body;
+  
+  const userId = req.decodedToken.sub;
+  
+  Connections.addConnection(connection, userId) 
+    .then(result => {
+      res.status(201).json({ result })
+     })
+  
+    .catch(err => {
+      res.status(400).json({ message: err })
+     })
+});
+
 
 module.exports = router;
