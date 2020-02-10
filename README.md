@@ -85,7 +85,7 @@ To get the server running locally:
 
 | id | position | company | link | method | appDate | notes | interview | userId |
 | -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- |
-| incremented | REQUIRED string | REQUIRED string | enum(LinkedIn, Connection, Job Website, Company Site, Other) | string | text | boolean(false default) | integer referencing user id |
+| incremented | REQUIRED string | REQUIRED string | string | enum(LinkedIn, Connection, Job Website, Company Site, Other) | string | text | boolean(false default) | integer referencing user id |
 
 ## Connections Model
 
