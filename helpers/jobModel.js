@@ -8,6 +8,7 @@ module.exports = {
   addJob,
   
   // Read
+  getAllJobs,
   getJob,
   getJobsByUser,
   
@@ -45,6 +46,14 @@ async function getJob(id) {
 }
 
 // getJobsByUser() - returns all results for jobs for a user
+
+async function getAllJobs() {
+  const results = await db  
+    .from('jobs')
+    .select('*')
+
+  return results;
+}
 
 async function getJobsByUser(userId) {
   const results = await db

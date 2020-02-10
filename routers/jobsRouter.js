@@ -5,16 +5,26 @@ const Jobs = require('../helpers/jobModel');
 const authentication = require('../middleware/authentication');
 
 
+router.get('/getall', (req, res) => {
+  Jobs.getAllJobs()
+    .then(results => {
+      res.status(201).json({ results })
+    })
+    .catch(err => {
+      res.status(400).json({ message: err })
+    })
+})
+
 /// ADD JOB TO USER WITH USER ID
 
 router.post('/add', authentication, (req, res) => {
   const job = req.body;
-  const { id } = req.body;
+  const { userId } = req.body;
   
-  Jobs.addJob(job, id)
-    .then(job => {
+  Jobs.addJob(job, userId)
+    .then(newJob => {
       res.status(201).json({
-        newjob: job,
+        newjob: newJob,
         message: 'New job added successfully!'
         })
       })
