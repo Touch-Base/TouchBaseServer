@@ -46,7 +46,7 @@ async function getConnection(id) {
     .select('*')
     .where({ id })
   
-  return job || null;
+  return connection || null;
 }
 
 // getAllConnections() - returns all results for connections
