@@ -66,3 +66,39 @@ async function getConnectionsByUser(userId) {
   
   return results;
 }
+
+// ---- UPDATE ----
+           
+// updateConnectionById() - updates a connection by connection id
+           
+async function updateConnectionById(changes, id) {
+
+    /// matches connection id and user id to correct connection
+
+    const [connection] = await db
+        .from('connections')
+        .update(changes)
+        .where({ 
+          'id': changes.id,
+          'userId': id  
+          })
+        .returning('*')
+      
+      return connection;
+    }
+
+// ---- DELETE ----
+
+// deleteConnection() - deletes a connection by connection id
+
+async function deleteConnection(id, userId) {
+  const results = await db
+    .from('connections')
+    .where({ 
+          'id': id,
+          'userId': userId
+          })
+    .del()
+  
+  return results;
+}
