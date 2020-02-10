@@ -20,3 +20,18 @@ module.exports = {
 }
 
 // ---- CREATE ----
+
+
+
+
+// ---- READ ----
+
+// getAllConnections() - returns all results for connections
+
+async function getAllConnections() {
+  const results = await db  
+    .from('connections')
+    .select('*')
+
+  return results;
+}
