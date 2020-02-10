@@ -51,5 +51,43 @@ router.post('/add', authentication, (req, res) => {
      })
 });
 
+/// UPDATE A CONNECTION WITH USER ID
+
+router.put('/update', authentication, (req, res) => {
+  const changes = req.body;
+
+  /// checks the user that is logged in and force passes their user ID as the parameter
+  const userId = req.decodedToken.sub;
+
+  Connection.updateConnectionById(changes, userId)
+    .then(updated => {
+      res.status(201).json({ 
+        updatedconnection: updated
+      })
+    })
+
+    .catch(err => {
+      res.status(400).json({ message: err })
+    })
+
+})
+
+/// DELETES A CONNECTION
+
+router.delete('/delete', authentication, (req, res) => {
+  const { id } = req.body;
+
+  /// checks the user that is logged in and force passes their user ID as the parameter
+  const userId = req.decodedToken.sub;
+
+  Connections.deleteConnection(id, userId)
+    .then(result => {
+      res.status(201).json({ message: "Successfully deleted connection!", result: result })
+    })
+
+    .catch(err => {
+      res.status(400).json({ message: err })
+    })
+})
 
 module.exports = router;
