@@ -69,10 +69,16 @@ async function getJobsByUser(userId) {
 // updateJob() - updates a job by job id
            
 async function updateJobById(changes, id) {
-      const [job] = await db
+  
+    /// matches job id and user id to correct job
+
+    const [job] = await db
         .from('jobs')
         .update(changes)
-        .where({ id })
+        .where({ 
+          'id': changes.id,
+          'userId': id  
+          })
         .returning('*')
       
       return job;
