@@ -59,7 +59,7 @@ router.put('/update', authentication, (req, res) => {
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
 
-  Connection.updateConnectionById(changes, userId)
+  Connections.updateConnectionById(changes, userId)
     .then(updated => {
       res.status(201).json({ 
         updatedconnection: updated
