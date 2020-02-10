@@ -75,7 +75,11 @@ To get the server running locally:
 
 # Data Model
 
-🚫This is just an example. Replace this with your data model
+## User Model
+
+| id | firstname | lastname | password | creationDate | email | age | location | jobsTotal | connectionsTotal | summary |
+| -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- | ---------------- | ------- |
+| incremented | REQUIRED string | REQUIRED string | string | ------------ | ----- | --- | -------- | --------- | ---------------- | ------- |
 
 <!--
 #### 2️⃣ ORGANIZATIONS
