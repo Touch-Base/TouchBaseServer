@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const userRouter = require('./routers/usersRouter');
 const jobsRouter = require('./routers/jobsRouter');
+const connectionsRouter = require('./routers/connectionsRouter');
 
 const server = express();
 
@@ -21,6 +22,7 @@ server.use(cors());
 
 server.use('/api/users', userRouter);
 server.use('/api/jobs', jobsRouter);
+server.use('/api/connections', connectionsRouter);
 
 /// main get endpoint
 
