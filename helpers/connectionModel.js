@@ -10,7 +10,7 @@ module.exports = {
   // Read
   getConnection,
   getAllConnections,
-//   getConnectionsByUser,
+  getConnectionsByUser,
   
   // Update
 //   updateConnectionById,
@@ -19,9 +19,6 @@ module.exports = {
 //   deleteConnection
 }
 
-// ---- CREATE ----
- 
-// addConnection(connection, userId) - adds a connection to a specific user
 
 // ---- CREATE ----
 
@@ -56,5 +53,16 @@ async function getAllConnections() {
     .from('connections')
     .select('*')
 
+  return results;
+}
+
+// getConnectionsByUser() - returns all connections for a user by id
+
+async function getConnectionsByUser(userId) {
+  const results = await db
+    .from('connections')
+    .where({ 'connections.userId': userId })
+    .select('*')
+  
   return results;
 }
