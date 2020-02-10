@@ -18,3 +18,5 @@ router.get('/getall', (req, res) => {
       res.status(400).json({ message: err })
     })
  })
+
+module.exports = router;
