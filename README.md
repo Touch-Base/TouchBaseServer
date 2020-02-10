@@ -39,7 +39,7 @@ To get the server running locally:
 | Method | Endpoint                | Access Control | Description                                               |
 | ------ | ----------------------- | -------------- | --------------------------------------------------------- |
 | GET    |  `/api/users/useremail` | owner          | Returns the information for a user using their token.     |
-| POST   |  `api/users/register`   | anyone         | Registers a user to the database and provides a token.    |
+| POST   |  `/api/users/register`   | anyone         | Registers a user to the database and provides a token.    |
 | POST   |  `/api/users/login`     | anyone         | Logs in a user and provides a token.                      |
 | PUT    |  `/api/users/update`    | owner          | Updates a user's information using their token.           |
 
