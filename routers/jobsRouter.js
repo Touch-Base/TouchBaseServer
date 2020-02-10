@@ -4,6 +4,7 @@ const Jobs = require('../helpers/jobModel');
 // authentication middleware
 const authentication = require('../middleware/authentication');
 
+/// GET ALL JOBS, FOR DEVELOPMENT
 
 router.get('/getall', (req, res) => {
   Jobs.getAllJobs()
@@ -19,6 +20,8 @@ router.get('/getall', (req, res) => {
 
 router.post('/add', authentication, (req, res) => {
   const job = req.body;
+
+  /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
   
   Jobs.addJob(job, userId)
@@ -34,6 +37,16 @@ router.post('/add', authentication, (req, res) => {
         })
       });
   });
+
+/// UPDATE A JOB WITH USER ID
+
+router.put('/update', authentication, (req, res) => {
+  const changes = req.body;
+
+  /// checks the user that is logged in and force passes their user ID as the parameter
+  const userId = req.decodedToken.sub;
+
+})
 
 
 module.exports = router;

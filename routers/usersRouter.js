@@ -82,7 +82,8 @@ router.post('/login', (req, res) => {
 
 router.put('/update', authentication, (req, res) => {
   let changes = req.body;
-  const { email } = req.body;
+  
+  const email = req.decodedToken.email;
   
   Users.updateUserByEmail(email, changes)
     .then(newUser => {

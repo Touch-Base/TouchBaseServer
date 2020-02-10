@@ -8,12 +8,12 @@ module.exports = {
   addJob,
   
   // Read
-  getAllJobs,
   getJob,
+  getAllJobs,
   getJobsByUser,
   
   // Update
-  updateJob,
+  updateJobById,
   
   // Delete
   deleteJob
@@ -68,7 +68,7 @@ async function getJobsByUser(userId) {
            
 // updateJob() - updates a job by job id
            
-async function updateJob(changes, id) {
+async function updateJobById(changes, id) {
       const [job] = await db
         .from('jobs')
         .update(changes)
