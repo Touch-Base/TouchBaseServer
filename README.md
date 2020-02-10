@@ -79,7 +79,25 @@ To get the server running locally:
 
 | id | firstname | lastname | password | creationDate | email | age | location | jobsTotal | connectionsTotal | summary |
 | -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- | ---------------- | ------- |
-| incremented | REQUIRED string | REQUIRED string | string | ------------ | ----- | --- | -------- | --------- | ---------------- | ------- |
+| incremented | REQUIRED string | REQUIRED string | string | date | REQUIRED string | integer | string | integer | integer | text |
+
+## Jobs Model
+
+| id | position | company | link | method | appDate | notes | interview | userId |
+| -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- |
+| incremented | REQUIRED string | REQUIRED string | enum(LinkedIn, Connection, Job Website, Company Site, Other) | string | text | boolean(false default) | integer referencing user id |
+
+## Connections Model
+
+| id | firstname | lastname | title | company | phone | email | notes | userId |
+| -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- |
+| incremented | REQUIRED string | REQUIRED string | REQUIRED string | REQUIRED string | string | string | text | integer referencing user id |
+
+## Events Model
+
+| id | name | location | date | description | attended | userId |
+| -- | --------- | -------- | -------- | ------------ | ----- | --- |
+| incremented | REQUIRED string | REQUIRED string | REQUIRED date | text | boolean(false default) | integer referencing user id |
 
 <!--
 #### 2️⃣ ORGANIZATIONS
