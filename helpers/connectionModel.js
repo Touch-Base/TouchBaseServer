@@ -5,18 +5,18 @@ const db = require('../data/db-config');  // imports database
 
 module.exports = {
   // Create
-  addConnection,
+//   addConnection,
   
   // Read
-  getConnections,
+//   getConnections,
   getAllConnections,
-  getConnectionsByUser,
+//   getConnectionsByUser,
   
   // Update
-  updateConnectionById,
+//   updateConnectionById,
   
   // Delete
-  deleteConnection
+//   deleteConnection
 }
 
 // ---- CREATE ----
