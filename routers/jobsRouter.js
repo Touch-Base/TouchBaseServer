@@ -6,13 +6,29 @@ const authentication = require('../middleware/authentication');
 
 /// GET ALL JOBS, FOR DEVELOPMENT
 
-router.get('/getall', (req, res) => {
+router.get('/get', (req, res) => {
   Jobs.getAllJobs()
     .then(results => {
       res.status(201).json({ results })
     })
     .catch(err => {
       res.status(400).json({ message: err })
+    })
+})
+
+/// GET ALL JOBS FOR THE USER ID
+
+router.get('/getall', authentication, (req, res) => {
+  /// checks the user that is logged in and force passes their user ID as the parameter
+  const userId = req.decodedToken.sub;
+
+  Jobs.getJobsByUser(userId)
+    .then(jobs => {
+      res.status(200).json({ allJobs: jobs })
+    })
+
+    .catch(err => {
+      res.status(401).json({ message: err })
     })
 })
 
