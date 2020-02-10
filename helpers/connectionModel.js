@@ -13,10 +13,10 @@ module.exports = {
   getConnectionsByUser,
   
   // Update
-//   updateConnectionById,
+  updateConnectionById,
   
   // Delete
-//   deleteConnection
+  deleteConnection
 }
 
 
