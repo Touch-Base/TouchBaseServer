@@ -32,9 +32,9 @@ To get the server running locally:
 - `npm run migrate:test` runs migrations against the test database
 
 
-## Endpoints
+# Endpoints
 
-#### User Routes
+### User Routes
 
 | Method | Endpoint                | Access Control | Description                                               |
 | ------ | ----------------------- | -------------- | --------------------------------------------------------- |
@@ -43,7 +43,7 @@ To get the server running locally:
 | POST   |  `/api/users/login`     | anyone         | Logs in a user and provides a token.                      |
 | PUT    |  `/api/users/update`    | owner          | Updates a user's information using their token.           |
 
-#### Job Routes
+### Job Routes
 
 | Method | Endpoint                | Access Control | Description                                               |
 | ------ | ----------------------- | -------------- | --------------------------------------------------------- |
@@ -53,7 +53,7 @@ To get the server running locally:
 | PUT    |  `/api/jobs/update`     | owner          | Updates a job using job ID and user token.                |
 | DELETE |  `/api/jobs/delete`     | owner          | Deletes a job using job ID and user token.                |
 
-#### Connection Routes
+### Connection Routes
 
 | Method | Endpoint                       | Access Control | Description                                               |
 | ------ | -------------------------------| -------------- | --------------------------------------------------------- |
@@ -63,7 +63,7 @@ To get the server running locally:
 | PUT    |  `/api/connections/update`     | owner          | Updates a connection using connection ID and user token.  |
 | DELETE |  `/api/connections/delete`     | owner          | Deletes a connection using connection ID and user token.  |
 
-#### Event Routes
+### Event Routes
 
 | Method | Endpoint                  | Access Control | Description                                               |
 | ------ | --------------------------| -------------- | --------------------------------------------------------- |
