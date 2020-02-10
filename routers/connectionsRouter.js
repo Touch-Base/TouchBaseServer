@@ -7,16 +7,15 @@ const authentication = require('../middleware/authentication');
 
 // GET ALL CONNECTIONS
 
-router.get('/getall', (req, res) => {
-  
+router.get('/get', (req, res) => {
   Connections.getAllConnections()
     .then(results => {
       res.status(201).json({ results })
     })
-    
     .catch(err => {
       res.status(400).json({ message: err })
     })
- })
+});
+
 
 module.exports = router;
