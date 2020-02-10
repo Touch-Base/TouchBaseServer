@@ -12,7 +12,7 @@ const authentication = require('../middleware/authentication');
 
 router.get('/useremail', authentication, (req, res) => {
 
-  let { email } = req.body;
+  const email = req.decodedToken.email;
 
   Users.getUserByEmail(email) 
     .then(user => {
