@@ -22,7 +22,7 @@ router.get('/getall', authentication, (req, res) => {
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
 
-  Events.getEventsByUserId(userId)
+  Events.getEventsByUser(userId)
     .then(events => {
       res.status(200).json({ allEvents: events })
     })
