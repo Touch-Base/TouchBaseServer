@@ -19,7 +19,7 @@ router.get('/getall', (req, res) => {
 
 router.post('/add', authentication, (req, res) => {
   const job = req.body;
-  const { userId } = req.body;
+  const userId = req.decodedToken.sub;
   
   Jobs.addJob(job, userId)
     .then(newJob => {
