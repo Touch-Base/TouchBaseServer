@@ -99,113 +99,25 @@ To get the server running locally:
 | -- | --------- | -------- | -------- | ------------ | ----- | --- |
 | incremented | REQUIRED string | REQUIRED string | REQUIRED date | text | boolean(false default) | integer referencing user id |
 
-<!--
-#### 2️⃣ ORGANIZATIONS
 
----
-
-```
-{
-  id: UUID
-  name: STRING
-  industry: STRING
-  paid: BOOLEAN
-  customer_id: STRING
-  subscription_id: STRING
-}
-```
-
-#### USERS
-
----
-
-```
-{
-  id: UUID
-  organization_id: UUID foreign key in ORGANIZATIONS table
-  first_name: STRING
-  last_name: STRING
-  role: STRING [ 'owner', 'supervisor', 'employee' ]
-  email: STRING
-  phone: STRING
-  cal_visit: BOOLEAN
-  emp_visit: BOOLEAN
-  emailpref: BOOLEAN
-  phonepref: BOOLEAN
-}
-``` -->
-
-## 2️⃣ Actions
-
-🚫 This is an example, replace this with the actions that pertain to your backend
-
-<!--
-`getOrgs()` -> Returns all organizations
-
-`getOrg(orgId)` -> Returns a single organization by ID
-
-`addOrg(org)` -> Returns the created org
-
-`updateOrg(orgId)` -> Update an organization by ID
-
-`deleteOrg(orgId)` -> Delete an organization by ID
-<br>
-<br>
-<br>
-`getUsers(orgId)` -> if no param all users
-
-`getUser(userId)` -> Returns a single user by user ID
-
-`addUser(user object)` -> Creates a new user and returns that user. Also creates 7 availabilities defaulted to hours of operation for their organization.
-
-`updateUser(userId, changes object)` -> Updates a single user by ID.
-
-`deleteUser(userId)` -> deletes everything dependent on the user
--->
-
-## 3️⃣ Environment Variables
+## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables.
 
 create a .env file that includes the following:
 
-<!-- will we have a STAGING_DB?
-    *  STAGING_DB - optional development db for using functionality
--->
-
 ```
-PORT=4000         // Port number for express server to run on
-NODE_ENV          // set to "development" until ready for "production"
+EXPRESS_PORT=1234 // Port number for express server to run on
 DB_HOST=localhost // Location of the database
 DB_PORT=5432      // Port the database is running on
 DB_USER=postgres  // THIS IS YOUR LOCAL DB USER NAME (probably postgres)
 DB_PASSWORD=pass  // THIS IS YOUR LOCAL DATABASE/PSQL PASSWORD
-DB_NAME=propman   // THIS IS YOUR LOCAL DATABASE NAME
+DB_NAME=touchbase // THIS IS YOUR LOCAL DATABASE NAME
 
-TEST_DB_HOST=localhost
-TEST_DB_PORT=5432
-TEST_DB_USER=postgres
-TEST_DB_PASSWORD=postgres
-TEST_DB_NAME=propman-test
-
-GOOGLE_APPLICATION_CREDENTIALS=./firebase/admin.json
-FIREBASE_URL=example-url
-FIREBASE_API_KEY=examplekey
-FIREBASE_AUTH_DOMAIN=exampleapp.firebaseapp.com
-FIREBASE_DATABASE_URL=exampledb.firebaseio.com
-FIREBASE_PROJECT_ID=example-project
-FIREBASE_STORAGE_BUCKET=exmaple.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=1234
-FIREBASE_APP_ID=1234
-FIREABASE_MEASUREMENT_ID=example-g-id
+DB_ENV=development
 
 JWT_SECRET="Your Secret." // you can generate this by using a python shell or add in a temporary secret.
 ```
-
-<!-- Currently not using Sendgrid or Stripe at this time
-  *  SENDGRID_API_KEY - this is generated in your Sendgrid account
-  *  stripe_secret - this is generated in the Stripe dashboard
--->
 
 ## Contributing
 
@@ -213,9 +125,6 @@ When contributing to this repository, please first discuss the change you wish t
 
 Please note we have a [code of conduct](./code_of_conduct.md). Please follow it in all your interactions with the project.
 
-**This codebase uses Eslint and Prettier to enforce styling.** When you go to commit
-code, Husky will lint and format your code, failing to commit if there is
-something that cannot be automatically fixed.
 
 ### Issue/Bug Request
 
@@ -243,13 +152,3 @@ Remember that this project is licensed under the MIT license, and by submitting 
 - Ensure that your code conforms to our existing code conventions and test coverage.
 - Include the relevant issue number, if applicable.
 - You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
-
-### Attribution
-
-These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
-
-## Documentation
-
-See [Frontend Documentation](https://github.com/Lambda-School-Labs/property-manager-fe/blob/master/README.md) for details on the fronend of our project.
-
-<!-- Add DS iOS and/or Andriod links here if applicable. (Currently not applicable. An iOS and/or Andriod app would be a good future feature.) -->
