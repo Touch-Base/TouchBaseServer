@@ -7,6 +7,19 @@ const jwt = require('jsonwebtoken');
 // authentication middleware
 const authentication = require('../middleware/authentication');
 
+// GET USERS
+
+router.get('/getall', (req, res) => {
+
+  Users.getAllUsers()
+    .then(users => {
+      res.status(201).json({ users: users })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+
 
 // GET USER BY EMAIL WITH TOKEN
 
