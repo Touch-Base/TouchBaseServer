@@ -9,6 +9,7 @@ module.exports = {
   
   // Read
   getUserByEmail,
+  getAllUsers,
   
   // Update
   updateUserByEmail
@@ -38,6 +39,17 @@ async function getUserByEmail(email) {
     
     return user;
 }
+
+// GET ALL USERS
+
+async function getAllUsers() {
+  const [users] = await db
+    .from('users')
+    .select('*')
+  
+  returns users;
+}
+
 
 // updateUserByEmail(update, email) - updates a user by email and returns "1" on confirmation
 
