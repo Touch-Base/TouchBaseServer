@@ -33,9 +33,12 @@ async function addUser(user) {
 // getUserByEmail(email) - gets a user by the user email
 
 async function getUserByEmail(email) {
+    console.log(email)
     const [user] = await db
         .from('users')
         .where({ email })
+    
+    console.log(user)
     
     return user;
 }
