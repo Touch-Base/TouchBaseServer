@@ -42,12 +42,8 @@ async function getUserByEmail(email) {
 
 // GET ALL USERS
 
-async function getAllUsers() {
-  const [users] = await db
-    .select('*')
-    .from('users')
-  
-  return users;
+function getAllUsers() {
+  return db('users').select('*')
 }
 
 
