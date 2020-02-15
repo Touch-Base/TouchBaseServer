@@ -47,7 +47,7 @@ async function getAllUsers() {
     .from('users')
     .select('*')
   
-  returns users;
+  return users;
 }
 
 
