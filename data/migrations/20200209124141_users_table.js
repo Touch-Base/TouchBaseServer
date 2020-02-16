@@ -11,6 +11,7 @@ exports.up = function(knex) {
             tbl.string('email', 128).notNullable().unique(); // User's email address
             tbl.integer('age'); // User's age
             tbl.string('location'); // User's location
+            tbl.string('position'); // User's position
             tbl.integer('jobsTotal'); // Number of jobs applied so far
             tbl.integer('connectionsTotal'); // Number of connections made so far
             tbl.text('summary'); // Summary of user

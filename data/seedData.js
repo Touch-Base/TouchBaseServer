@@ -14,6 +14,7 @@ module.exports = {
       email: 'masterUser@gmail.com',
       age: 29,
       location: 'Boston, MA',
+      position: 'Developer',
       jobsTotal: 69,
       connectionsTotal: 11,
       summary: 'Hey my name is Mr. Master. Welcome to my profile.'
