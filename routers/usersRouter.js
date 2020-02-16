@@ -23,11 +23,11 @@ router.get('/getall', (req, res) => {
 
 // GET USER BY EMAIL WITH TOKEN
 
-router.get('/useremail', authentication, (req, res) => {
+router.get('/user', authentication, (req, res) => {
 
-  const email = req.decodedToken.email;
+  const id = req.decodedToken.sub;
 
-  Users.getUserByEmail(email) 
+  Users.getUserById(id) 
     .then(user => {
       res.status(201).json({ user: user })
     })
