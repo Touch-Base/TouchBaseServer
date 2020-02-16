@@ -9,6 +9,7 @@ module.exports = {
   
   // Read
   getUserById,
+  getUserByEmail,
   getAllUsers,
   
   // Update
@@ -30,13 +31,24 @@ async function addUser(user) {
       
 // ---- READ ----
 
-// getUserByEmail(email) - gets a user by the user email
+// getUserById(id) - gets a user by the user id
 
 async function getUserById(id) {
     console.log(id)
     const [user] = await db
         .from('users')
         .where({ id })
+    
+    console.log(user)
+    
+    return user;
+}
+
+async function getUserByEmail(email) {
+    console.log(email)
+    const [user] = await db
+        .from('users')
+        .where({ email })
     
     console.log(user)
     
