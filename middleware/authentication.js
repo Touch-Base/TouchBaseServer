@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
+  console.log(token)
 
   /// see if there is a token and check if it is valid
 
@@ -12,6 +13,7 @@ module.exports = (req, res, next) => {
         res.status(401).json ({ message: 'Not verified' });
       } else {
         req.decodedToken = decodedToken;
+        console.log(decodedToken);
         next();
       }
     })

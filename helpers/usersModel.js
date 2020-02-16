@@ -8,11 +8,11 @@ module.exports = {
   addUser,
   
   // Read
-  getUserByEmail,
+  getUserById,
   getAllUsers,
   
   // Update
-  updateUserByEmail
+  updateUserById
 }
 
 // ---- CREATE ----
@@ -32,11 +32,11 @@ async function addUser(user) {
 
 // getUserByEmail(email) - gets a user by the user email
 
-async function getUserByEmail(email) {
-    console.log(email)
+async function getUserById(id) {
+    console.log(id)
     const [user] = await db
         .from('users')
-        .where({ email })
+        .where({ id })
     
     console.log(user)
     
@@ -50,8 +50,8 @@ function getAllUsers() {
 }
 
 
-// updateUserByEmail(update, email) - updates a user by email and returns "1" on confirmation
+// updateUserById(update, id) - updates a user by email and returns "1" on confirmation
 
-function updateUserByEmail(email, changes) {
-    return db('users').where({ email }).update(changes);
+function updateUserById(id, changes) {
+    return db('users').where({ id }).update(changes);
 }

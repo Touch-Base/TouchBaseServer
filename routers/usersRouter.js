@@ -95,14 +95,14 @@ router.post('/login', (req, res) => {
 router.put('/update', authentication, (req, res) => {
   let changes = req.body;
   
-  const email = req.decodedToken.email;
+  const id = req.decodedToken.sub;
   
-  Users.updateUserByEmail(email, changes)
+  Users.updateUserById(id, changes)
     .then(newUser => {
 
         // after successfully updating, returns the updated user
       
-      Users.getUserByEmail(email) 
+      Users.getUserById(id) 
         .then(user => {
           res.status(201).json({ confirmation: newUser, user: user })
       })
