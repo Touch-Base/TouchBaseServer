@@ -42,11 +42,15 @@ router.post('/add', authentication, (req, res) => {
   
   Jobs.addJob(job, userId)
     .then(newJob => {
-      res.status(201).json({
-        newjob: newJob,
-        message: 'New job added successfully!'
+      /// gets all jobs for user after success
+      Jobs.getJobsByUser(userId)
+        .then(jobs => {
+          res.status(200).json({ allJobs: jobs })
         })
-      })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
     .catch(err => {
       res.status(500).json({
         message: err
