@@ -42,9 +42,16 @@ router.post('/add', authentication, (req, res) => {
   const userId = req.decodedToken.sub;
   
   Connections.addConnection(connection, userId) 
-    .then(result => {
-      res.status(201).json({ result })
-     })
+    .then(newConnection => {
+    /// gets all jobs for user after success
+      Connections.getConnectionsByUser(userId)
+        .then(connections => {
+          res.status(200).json({ allConnections: connections })
+        })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
   
     .catch(err => {
       res.status(400).json({ message: err })
