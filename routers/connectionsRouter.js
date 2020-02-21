@@ -52,6 +52,7 @@ router.post('/add', authentication, (req, res) => {
         .catch(err => {
           res.status(401).json({ message: err })
         })
+     })
   
     .catch(err => {
       res.status(400).json({ message: err })
