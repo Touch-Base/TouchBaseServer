@@ -66,6 +66,7 @@ router.put('/update', authentication, (req, res) => {
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
+  console.log(userId);
 
   Jobs.updateJobById(changes, userId)
     .then(updated => {
