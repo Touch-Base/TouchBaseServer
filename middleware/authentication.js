@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
-  console.log("we are looking for a token:", token)
 
   /// see if there is a token and check if it is valid
 
@@ -20,7 +19,6 @@ module.exports = (req, res, next) => {
     })
   
   } else {
-    console.log("no token")
     res.status(400).json({ message: 'No token provided' });
   }
 };
