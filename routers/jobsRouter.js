@@ -83,8 +83,8 @@ router.put('/update', authentication, (req, res) => {
 
 /// DELETES A JOB
 
-router.delete('/delete', authentication, (req, res) => {
-  const { id } = req.body;
+router.delete('/delete/:id', authentication, (req, res) => {
+  const id = parseInt(req.params.id);
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
