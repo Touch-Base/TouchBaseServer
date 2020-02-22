@@ -71,7 +71,8 @@ async function getJobsByUser(userId) {
 async function updateJobById(changes, id) {
 
     /// matches job id and user id to correct job
-
+    console.log(changes)
+    console.log(id)
     const [job] = await db
         .from('jobs')
         .update(changes)
@@ -80,7 +81,7 @@ async function updateJobById(changes, id) {
           'userId': id  
           })
         .returning('*')
-      
+      console.log(job)
       return job;
     }
 
