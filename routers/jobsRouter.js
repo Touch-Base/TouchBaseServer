@@ -90,8 +90,17 @@ router.delete('/delete/:id', authentication, (req, res) => {
   const userId = req.decodedToken.sub;
 
   Jobs.deleteJob(id, userId)
+    
     .then(result => {
-      res.status(201).json({ message: "Successfully deleted!", result: result })
+    // returns the new array of jobs without the newly removed job
+    Jobs.getJobsByUser(userId)
+        .then(jobs => {
+          res.status(200).json({ allJobs: jobs })
+        })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
     })
 
     .catch(err => {
