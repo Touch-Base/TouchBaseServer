@@ -88,8 +88,6 @@ router.delete('/delete', authentication, (req, res) => {
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
-  console.log("here is the id", id)
-  console.log("here is the userid", userId)
 
   Jobs.deleteJob(id, userId)
     .then(result => {
