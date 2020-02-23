@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
             tbl.enum('method', ['LinkedIn', 'Connection', 'Job Website', 'Company Site', 'Other']).notNullable();
             tbl.string('appDate'); // Application Date
             tbl.text('notes'); // Description of the job/interview notes
+            tbl.text('color') // Color of the job card background
             tbl.boolean('interview').defaultTo(false); // Checks if if there is an interview offer
             tbl
               .integer('userId')
