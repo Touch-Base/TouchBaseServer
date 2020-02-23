@@ -41,8 +41,16 @@ router.post('/add', authentication, (req, res) => {
   const userId = req.decodedToken.sub;
   
   Events.addEvent(event, userId) 
-    .then(result => {
-      res.status(201).json({ result })
+    .then(newEvent => {
+      /// gets all events for user after success
+      Events.getEventsByUser(userId)
+        .then(events => {
+          res.status(200).json({ allEvents: events })
+        })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
      })
   
     .catch(err => {

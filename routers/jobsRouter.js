@@ -42,11 +42,16 @@ router.post('/add', authentication, (req, res) => {
   
   Jobs.addJob(job, userId)
     .then(newJob => {
-      res.status(201).json({
-        newjob: newJob,
-        message: 'New job added successfully!'
+      /// gets all jobs for user after success
+      Jobs.getJobsByUser(userId)
+        .then(jobs => {
+          res.status(200).json({ allJobs: jobs })
         })
-      })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
+    })
     .catch(err => {
       res.status(500).json({
         message: err
@@ -61,6 +66,7 @@ router.put('/update', authentication, (req, res) => {
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
+  console.log(userId);
 
   Jobs.updateJobById(changes, userId)
     .then(updated => {
@@ -77,15 +83,24 @@ router.put('/update', authentication, (req, res) => {
 
 /// DELETES A JOB
 
-router.delete('/delete', authentication, (req, res) => {
-  const { id } = req.body;
+router.delete('/delete/:id', authentication, (req, res) => {
+  const id = parseInt(req.params.id);
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
 
   Jobs.deleteJob(id, userId)
+    
     .then(result => {
-      res.status(201).json({ message: "Successfully deleted!", result: result })
+    // returns the new array of jobs without the newly removed job
+    Jobs.getJobsByUser(userId)
+        .then(jobs => {
+          res.status(200).json({ allJobs: jobs })
+        })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
     })
 
     .catch(err => {
