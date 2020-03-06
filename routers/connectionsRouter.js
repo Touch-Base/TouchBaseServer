@@ -82,15 +82,24 @@ router.put('/update', authentication, (req, res) => {
 
 /// DELETES A CONNECTION
 
-router.delete('/delete', authentication, (req, res) => {
-  const { id } = req.body;
+router.delete('/delete/:id', authentication, (req, res) => {
+  const id = parseInt(req.params.id);
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
 
   Connections.deleteConnection(id, userId)
+    
     .then(result => {
-      res.status(201).json({ message: "Successfully deleted connection!", result: result })
+    // returns the new array of jobs without the newly removed job
+    Connections.getConnectionsByUser(userId)
+        .then(connections => {
+          res.status(200).json({ allConnections: connections })
+        })
+
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
     })
 
     .catch(err => {
