@@ -82,18 +82,22 @@ router.put('/update', authentication, (req, res) => {
 /// DELETES AN EVENT
 
 router.delete('/delete', authentication, (req, res) => {
-  const { id } = req.body;
+  const id = parseInt(req.params.id);
 
   /// checks the user that is logged in and force passes their user ID as the parameter
   const userId = req.decodedToken.sub;
 
   Events.deleteEvent(id, userId)
     .then(result => {
-      res.status(201).json({ message: "Successfully deleted event!", result: result })
-    })
+    // returns the new array of jobs without the newly removed job
+    Events.getEventsByUser(userId)
+        .then(events => {
+          res.status(200).json({ allEvents: events })
+        })
 
-    .catch(err => {
-      res.status(400).json({ message: err })
+        .catch(err => {
+          res.status(401).json({ message: err })
+        })
     })
 })
 
