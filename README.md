@@ -77,9 +77,9 @@ To get the server running locally:
 
 ## User Model
 
-| id | firstname | lastname | password | creationDate | email | age | location | jobsTotal | connectionsTotal | summary |
+| id | firstname | lastname | password | creationDate | email | age | location | jobsTotal | connectionsTotal | summary | phone |
 | -- | --------- | -------- | -------- | ------------ | ----- | --- | -------- | --------- | ---------------- | ------- |
-| incremented | REQUIRED string | REQUIRED string | string | date | REQUIRED string | integer | string | integer | integer | text |
+| incremented | REQUIRED string | REQUIRED string | string | date | REQUIRED string | integer | string | integer | integer | text | string |
 
 ## Jobs Model
 
