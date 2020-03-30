@@ -6,7 +6,7 @@ exports.up = function(knex) {
     tbl.string("firstname", 128).notNullable(); // User's first name
     tbl.string("lastname", 128).notNullable(); // User's last name
     tbl.string("password", 128);
-    tbl.string("creationDate").defaultTo(myDate); // Date the account was created
+    tbl.date("creationDate").defaultTo(myDate); // Date the account was created
     tbl
       .string("email", 128)
       .notNullable()
