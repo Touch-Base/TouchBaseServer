@@ -12,6 +12,7 @@ exports.up = function(knex) {
       .notNullable()
       .unique(); // User's email address
     tbl.integer("age"); // User's age
+    tbl.string("phone"); // User's phone number
     tbl.string("location"); // User's location
     tbl.string("position"); // User's position
     tbl.string("profilepic"); // User's profile picture URL
