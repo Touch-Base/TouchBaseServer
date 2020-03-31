@@ -3,7 +3,7 @@ exports.up = function(knex) {
     tbl.increments("id");
     tbl.string("name").notNullable(); // Name of the event
     tbl.string("location").notNullable(); // Event's location
-    tbl.datetime("date").notNullable(); // Event's date and time
+    tbl.timestamp("date").notNullable(); // Event's date and time
     tbl.text("description"); // Event description
     tbl.boolean("attended").defaultTo(false); // Did you attend the event?
     tbl
