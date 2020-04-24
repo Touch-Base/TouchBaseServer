@@ -13,7 +13,6 @@ router.get("/get", (req, res) => {
   cloudinary.v2.search
     .expression("resource_type:image AND folder=eaf_images")
     .sort_by("public_id", "desc")
-    .max_results(30)
     .execute()
     .then((result) => res.status(201).json(result))
     .catch((err) => {
